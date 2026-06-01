@@ -1,0 +1,386 @@
+/* ========================================
+   Pro Panel — Login sahifasi
+   Login.css  (App.css dan ko'chirilgan)
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&family=Syne:wght@600;700&display=swap');
+
+/* ---------- Asosiy wrapper ---------- */
+.login-wrap {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #06080f;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ---------- Orqa fon: suzuvchi sharlar ---------- */
+.bg-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.18;
+  animation: floatOrb 8s ease-in-out infinite;
+}
+
+.orb1 {
+  width: 340px;
+  height: 340px;
+  background: #00d4ff;
+  top: -80px;
+  right: -60px;
+  animation-delay: 0s;
+}
+
+.orb2 {
+  width: 260px;
+  height: 260px;
+  background: #7c3aed;
+  bottom: -60px;
+  left: -50px;
+  animation-delay: 3s;
+}
+
+.orb3 {
+  width: 180px;
+  height: 180px;
+  background: #06b6d4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.08;
+  animation-delay: 1.5s;
+  animation-name: floatOrb3;
+}
+
+@keyframes floatOrb {
+  0%,  100% { transform: translateY(0px) scale(1); }
+  50%        { transform: translateY(-24px) scale(1.06); }
+}
+
+@keyframes floatOrb3 {
+  0%,  100% { transform: translate(-50%, -50%) scale(1); }
+  50%        { transform: translate(-50%, calc(-50% - 20px)) scale(1.1); }
+}
+
+/* ---------- Orqa fon: grid chiziqlar ---------- */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ---------- Karta ---------- */
+.card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 400px;
+  padding: 2.75rem 2.25rem;
+  margin: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---------- Logo va sarlavha ---------- */
+.logo-area {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeDown 0.6s ease both;
+}
+
+.logo-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 32px rgba(0, 212, 255, 0.3);
+}
+
+.logo-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.logo-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+/* ---------- Form guruhlar ---------- */
+.form-group {
+  margin-bottom: 14px;
+  animation: fadeUp 0.6s ease both;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.15s; }
+.form-group:nth-child(2) { animation-delay: 0.25s; }
+.form-group:nth-child(3) { animation-delay: 0.35s; }
+
+/* ---------- Input field wrapper ---------- */
+.field-wrap {
+  position: relative;
+}
+
+/* ---------- Ikonka ---------- */
+.field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 17px;
+  pointer-events: none;
+  transition: color 0.25s ease;
+}
+
+/* ---------- Input matni ---------- */
+.login-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding: 13px 44px 13px 42px;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    background   0.25s ease,
+    box-shadow   0.25s ease;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.login-input:focus {
+  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+}
+
+.login-input:focus ~ .field-icon {
+  color: rgba(0, 212, 255, 0.7);
+}
+
+/* ---------- Parolni ko'rsat/yashir tugmasi ---------- */
+.toggle-pass {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.toggle-pass:hover {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ---------- "Parolni unutdingizmi?" ---------- */
+.forgot {
+  text-align: right;
+  margin-top: 7px;
+}
+
+.forgot a {
+  font-size: 12px;
+  color: rgba(0, 212, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgot a:hover {
+  color: #00d4ff;
+  text-decoration: underline;
+}
+
+/* ---------- Kirish tugmasi ---------- */
+.btn-kirish {
+  width: 100%;
+  padding: 13px;
+  margin-top: 4px;
+  background: linear-gradient(135deg, #00c6e0 0%, #0091b5 100%);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform    0.15s ease,
+    box-shadow   0.2s  ease,
+    filter       0.2s  ease;
+  box-shadow: 0 4px 20px rgba(0, 198, 224, 0.25);
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+
+.btn-kirish::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.btn-kirish:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 6px 28px rgba(0, 198, 224, 0.38);
+}
+
+.btn-kirish:hover::before {
+  opacity: 1;
+}
+
+.btn-kirish:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-kirish.loading {
+  pointer-events: none;
+  filter: brightness(0.85);
+}
+
+/* ---------- Spinner ---------- */
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.spinner {
+  display: none;
+  width: 17px;
+  height: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.btn-kirish.loading .spinner   { display: inline-block; }
+.btn-kirish.loading .btn-label { display: none; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Status xabari ---------- */
+.status-msg {
+  font-size: 12.5px;
+  text-align: center;
+  margin-top: 10px;
+  min-height: 18px;
+  color: #f87171;
+  animation: fadeUp 0.3s ease both;
+}
+
+.status-msg.ok {
+  color: #34d399;
+}
+
+/* ---------- Ajratuvchi chiziq ---------- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1.25rem 0 1rem;
+  animation: fadeUp 0.6s 0.45s ease both;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.divider span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Pastki izoh ---------- */
+.footer-note {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.2);
+  animation: fadeUp 0.6s 0.5s ease both;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+/* ---------- Kirish animatsiyalari ---------- */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ---------- Mobil moslik ---------- */
+@media (max-width: 480px) {
+  .card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .logo-title {
+    font-size: 22px;
+  }
+}
